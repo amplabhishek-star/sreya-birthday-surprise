@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Surprise for Sreya 🎁</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #1a0b2e, #2d0f3d, #0f172a);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 700px;
+        padding: 40px 25px;
+    }
+
+    .gift {
+        font-size: 70px;
+        margin-bottom: 20px;
+        animation: float 2s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-15px);
+        }
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #e2d9f3;
+        margin-bottom: 30px;
+    }
+
+    .lock-box {
+        margin: 30px auto;
+        padding: 25px;
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 20px;
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(10px);
+    }
+
+    .lock {
+        font-size: 45px;
+        margin-bottom: 15px;
+    }
+
+    .status {
+        color: #ffcc70;
+        font-weight: bold;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+    }
+
+    .countdown {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+
+    .time-box {
+        background: rgba(0,0,0,0.35);
+        padding: 15px 12px;
+        border-radius: 12px;
+        min-width: 85px;
+    }
+
+    .number {
+        display: block;
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #ffffff;
+    }
+
+    .label {
+        font-size: 0.7rem;
+        color: #c7bddb;
+        margin-top: 5px;
+        text-transform: uppercase;
+    }
+
+    .footer-text {
+        margin-top: 35px;
+        font-size: 0.95rem;
+        color: #b9adc9;
+        line-height: 1.6;
+    }
+
+    .date {
+        color: #ffcc70;
+        font-weight: bold;
+    }
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="gift">🎁</div>
+
+    <h1>Hey Sreya...</h1>
+
+    <p class="subtitle">
+        Someone has prepared a little something especially for you.
+        <br><br>
+        But unfortunately...
+        curiosity won't help you this time. 😜
+    </p>
+
+    <div class="lock-box">
+
+        <div class="lock">🔒</div>
+
+        <div class="status">
+            SURPRISE LOCKED
+        </div>
+
+        <p>
+            This surprise is protected by a very strict
+            Birthday Security System.
+        </p>
+
+        <div class="countdown">
+
+            <div class="time-box">
+                <span class="number" id="days">00</span>
+                <span class="label">Days</span>
+            </div>
+
+            <div class="time-box">
+                <span class="number" id="hours">00</span>
+                <span class="label">Hours</span>
+            </div>
+
+            <div class="time-box">
+                <span class="number" id="minutes">00</span>
+                <span class="label">Minutes</span>
+            </div>
+
+            <div class="time-box">
+                <span class="number" id="seconds">00</span>
+                <span class="label">Seconds</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <p class="footer-text">
+
+        Your surprise unlocks on<br>
+
+        <span class="date">
+            14 September 2026 • 12:00 AM
+        </span>
+
+        <br><br>
+
+        Come back when your birthday officially begins.
+        <br>
+
+        Trust me... patience might be worth it. 🎁✨
+
+    </p>
+
+</div>
+
+
+<script>
+
+function updateCountdown() {
+
+    // Birthday unlock time:
+    // 14 September 2026, 12:00 AM India time
+
+    const targetDate = new Date("2026-09-14T00:00:00+05:30");
+
+    const now = new Date();
+
+    const difference = targetDate - now;
+
+
+    if (difference <= 0) {
+
+        document.body.innerHTML = `
+        
+        <div style="
+        min-height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:30px;
+        background:linear-gradient(135deg,#ff4e8a,#8b5cf6);
+        color:white;
+        font-family:Arial;
+        ">
+        
+        <div>
+        
+        <div style="font-size:80px;">🎉</div>
+        
+        <h1 style="font-size:3rem;">
+        HAPPY BIRTHDAY, SREYA!
+        </h1>
+        
+        <p style="font-size:1.3rem;margin-top:20px;">
+        Your surprise has officially unlocked! 🎁
+        </p>
+        
+        </div>
+        
+        </div>
+        
+        `;
+
+        return;
+    }
+
+
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+
+    const hours = Math.floor(
+        (difference / (1000 * 60 * 60)) % 24
+    );
+
+    const minutes = Math.floor(
+        (difference / (1000 * 60)) % 60
+    );
+
+    const seconds = Math.floor(
+        (difference / 1000) % 60
+    );
+
+
+    document.getElementById("days").innerText =
+        String(days).padStart(2, "0");
+
+    document.getElementById("hours").innerText =
+        String(hours).padStart(2, "0");
+
+    document.getElementById("minutes").innerText =
+        String(minutes).padStart(2, "0");
+
+    document.getElementById("seconds").innerText =
+        String(seconds).padStart(2, "0");
+
+}
+
+
+updateCountdown();
+
+setInterval(updateCountdown, 1000);
+
+</script>
+
+</body>
+</html>
