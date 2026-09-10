@@ -2,175 +2,320 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A Surprise for Sreya 🎁</title>
+<title>A Little Something for Sreya 🎁</title>
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: Georgia, "Times New Roman", serif;
+    color: white;
+
+    background:
+        radial-gradient(circle at 20% 20%, rgba(147,51,234,.25), transparent 35%),
+        radial-gradient(circle at 80% 80%, rgba(236,72,153,.18), transparent 35%),
+        linear-gradient(135deg, #090414, #160b27, #080812);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Floating stars */
+
+.star {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    opacity: .5;
+    animation: twinkle 3s infinite alternate;
+}
+
+.star:nth-child(1) { top: 12%; left: 15%; }
+.star:nth-child(2) { top: 25%; left: 80%; animation-delay: 1s; }
+.star:nth-child(3) { top: 70%; left: 12%; animation-delay: 2s; }
+.star:nth-child(4) { top: 82%; left: 78%; animation-delay: .5s; }
+.star:nth-child(5) { top: 40%; left: 92%; animation-delay: 1.5s; }
+.star:nth-child(6) { top: 15%; left: 55%; animation-delay: 2.5s; }
+
+@keyframes twinkle {
+    from { opacity: .15; transform: scale(.7); }
+    to { opacity: .9; transform: scale(1.4); }
+}
+
+/* Main card */
+
+.container {
+    width: 92%;
+    max-width: 680px;
+    text-align: center;
+    padding: 45px 28px;
+
+    background: rgba(255,255,255,.055);
+    border: 1px solid rgba(255,255,255,.13);
+    border-radius: 28px;
+
+    backdrop-filter: blur(18px);
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.5),
+        inset 0 1px rgba(255,255,255,.08);
+
+    animation: appear 1.5s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(.97);
     }
 
-    body {
-        font-family: Arial, sans-serif;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #1a0b2e, #2d0f3d, #0f172a);
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        overflow: hidden;
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
+}
+
+/* Gift */
+
+.gift {
+    font-size: 68px;
+    margin-bottom: 15px;
+
+    animation: floatingGift 3s ease-in-out infinite;
+}
+
+@keyframes floatingGift {
+
+    0%,100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(2deg);
+    }
+}
+
+.small-heading {
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: .72rem;
+    color: #d8b4fe;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
+    font-weight: normal;
+    margin-bottom: 18px;
+}
+
+.intro {
+    font-family: Arial, sans-serif;
+    line-height: 1.8;
+    color: #d9d1e8;
+    font-size: 1rem;
+}
+
+/* Lock */
+
+.lock-section {
+    margin-top: 30px;
+    padding: 24px;
+
+    border-radius: 20px;
+
+    background: rgba(0,0,0,.25);
+    border: 1px solid rgba(255,255,255,.09);
+}
+
+.lock {
+    font-size: 42px;
+    margin-bottom: 10px;
+
+    animation: lockPulse 2.5s infinite;
+}
+
+@keyframes lockPulse {
+
+    0%,100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0 rgba(255,255,255,0));
+    }
+
+    50% {
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 12px rgba(216,180,254,.45));
+    }
+}
+
+.locked {
+    font-family: Arial, sans-serif;
+    font-size: .75rem;
+    letter-spacing: 3px;
+    color: #f9a8d4;
+    font-weight: bold;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 22px;
+    flex-wrap: wrap;
+}
+
+.time {
+    min-width: 72px;
+    padding: 12px 8px;
+
+    background: rgba(255,255,255,.07);
+    border-radius: 14px;
+
+    border: 1px solid rgba(255,255,255,.08);
+}
+
+.number {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 1.65rem;
+    font-weight: bold;
+}
+
+.label {
+    display: block;
+    margin-top: 5px;
+
+    font-family: Arial, sans-serif;
+    font-size: .63rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #aaa0bd;
+}
+
+/* Bottom */
+
+.date {
+    margin-top: 25px;
+
+    font-family: Arial, sans-serif;
+    font-size: .85rem;
+    color: #c4b5fd;
+}
+
+.teaser {
+    margin-top: 20px;
+
+    font-family: Arial, sans-serif;
+    font-size: .9rem;
+    color: #a9a0b8;
+}
+
+.teaser span {
+    color: #f9a8d4;
+}
+
+/* Mobile */
+
+@media(max-width:500px) {
 
     .container {
-        width: 90%;
-        max-width: 700px;
-        padding: 40px 25px;
+        padding: 35px 18px;
     }
 
     .gift {
-        font-size: 70px;
-        margin-bottom: 20px;
-        animation: float 2s ease-in-out infinite;
+        font-size: 58px;
     }
 
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0);
-        }
-
-        50% {
-            transform: translateY(-15px);
-        }
-    }
-
-    h1 {
-        font-size: 2.5rem;
-        margin-bottom: 20px;
-    }
-
-    .subtitle {
-        font-size: 1.1rem;
-        line-height: 1.7;
-        color: #e2d9f3;
-        margin-bottom: 30px;
-    }
-
-    .lock-box {
-        margin: 30px auto;
-        padding: 25px;
-        border: 1px solid rgba(255,255,255,0.2);
-        border-radius: 20px;
-        background: rgba(255,255,255,0.08);
-        backdrop-filter: blur(10px);
-    }
-
-    .lock {
-        font-size: 45px;
-        margin-bottom: 15px;
-    }
-
-    .status {
-        color: #ffcc70;
-        font-weight: bold;
-        letter-spacing: 2px;
-        margin-bottom: 20px;
-    }
-
-    .countdown {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-top: 20px;
-    }
-
-    .time-box {
-        background: rgba(0,0,0,0.35);
-        padding: 15px 12px;
-        border-radius: 12px;
-        min-width: 85px;
+    .time {
+        min-width: 65px;
     }
 
     .number {
-        display: block;
-        font-size: 1.8rem;
-        font-weight: bold;
-        color: #ffffff;
+        font-size: 1.4rem;
     }
+}
 
-    .label {
-        font-size: 0.7rem;
-        color: #c7bddb;
-        margin-top: 5px;
-        text-transform: uppercase;
-    }
-
-    .footer-text {
-        margin-top: 35px;
-        font-size: 0.95rem;
-        color: #b9adc9;
-        line-height: 1.6;
-    }
-
-    .date {
-        color: #ffcc70;
-        font-weight: bold;
-    }
 </style>
-
 </head>
 
+
 <body>
+
+<!-- Background stars -->
+
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+
 
 <div class="container">
 
     <div class="gift">🎁</div>
 
-    <h1>Hey Sreya...</h1>
+    <div class="small-heading">
+        A little mystery awaits
+    </div>
 
-    <p class="subtitle">
-        Someone has prepared a little something especially for you.
+    <h1>Hey, Sreya...</h1>
+
+    <p class="intro">
+        Someone has been slightly more creative than usual
+        and prepared something for you.
         <br><br>
-        But unfortunately...
-        curiosity won't help you this time. 😜
+        But there's a tiny problem...
+        <br>
+        <b>You can't see it yet. 😜</b>
     </p>
 
-    <div class="lock-box">
 
-        <div class="lock">🔒</div>
+    <div class="lock-section">
 
-        <div class="status">
-            SURPRISE LOCKED
+        <div class="lock">🔐</div>
+
+        <div class="locked">
+            BIRTHDAY SURPRISE — LOCKED
         </div>
 
-        <p>
-            This surprise is protected by a very strict
-            Birthday Security System.
+        <p class="teaser">
+            The secret will reveal itself when the time is right.
+            <br>
+            <span>Patience, birthday girl. 😉</span>
         </p>
+
 
         <div class="countdown">
 
-            <div class="time-box">
+            <div class="time">
                 <span class="number" id="days">00</span>
                 <span class="label">Days</span>
             </div>
 
-            <div class="time-box">
+            <div class="time">
                 <span class="number" id="hours">00</span>
                 <span class="label">Hours</span>
             </div>
 
-            <div class="time-box">
+            <div class="time">
                 <span class="number" id="minutes">00</span>
                 <span class="label">Minutes</span>
             </div>
 
-            <div class="time-box">
+            <div class="time">
                 <span class="number" id="seconds">00</span>
                 <span class="label">Seconds</span>
             </div>
@@ -179,22 +324,12 @@
 
     </div>
 
-    <p class="footer-text">
 
-        Your surprise unlocks on<br>
-
-        <span class="date">
-            14 September 2026 • 12:00 AM
-        </span>
-
-        <br><br>
-
-        Come back when your birthday officially begins.
+    <div class="date">
+        🔓 Unlocks on
         <br>
-
-        Trust me... patience might be worth it. 🎁✨
-
-    </p>
+        <b>14 September 2026 • 12:00 AM IST</b>
+    </div>
 
 </div>
 
@@ -203,87 +338,104 @@
 
 function updateCountdown() {
 
-    // Birthday unlock time:
-    // 14 September 2026, 12:00 AM India time
-
-    const targetDate = new Date("2026-09-14T00:00:00+05:30");
+    const target =
+        new Date("2026-09-14T00:00:00+05:30");
 
     const now = new Date();
 
-    const difference = targetDate - now;
+    const difference = target - now;
 
 
     if (difference <= 0) {
 
         document.body.innerHTML = `
-        
+
         <div style="
-        min-height:100vh;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        text-align:center;
-        padding:30px;
-        background:linear-gradient(135deg,#ff4e8a,#8b5cf6);
-        color:white;
-        font-family:Arial;
+            min-height:100vh;
+            width:100%;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            background:linear-gradient(135deg,#ec4899,#8b5cf6,#4f46e5);
+            color:white;
+            font-family:Arial,sans-serif;
+            padding:25px;
         ">
-        
-        <div>
-        
-        <div style="font-size:80px;">🎉</div>
-        
-        <h1 style="font-size:3rem;">
-        HAPPY BIRTHDAY, SREYA!
-        </h1>
-        
-        <p style="font-size:1.3rem;margin-top:20px;">
-        Your surprise has officially unlocked! 🎁
-        </p>
-        
+
+            <div>
+
+                <div style="font-size:85px;">
+                    🎉
+                </div>
+
+                <h1 style="
+                    font-size:clamp(2.4rem,8vw,4.5rem);
+                    margin:20px 0;
+                ">
+                    HAPPY BIRTHDAY,
+                    <br>
+                    SREYA!
+                </h1>
+
+                <p style="
+                    font-size:1.2rem;
+                    line-height:1.7;
+                ">
+                    Your surprise has officially unlocked. 🎁
+                </p>
+
+            </div>
+
         </div>
-        
-        </div>
-        
+
         `;
 
         return;
     }
 
 
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const days =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
 
-    const hours = Math.floor(
-        (difference / (1000 * 60 * 60)) % 24
-    );
+    const hours =
+        Math.floor(
+            (difference /
+            (1000 * 60 * 60)) % 24
+        );
 
-    const minutes = Math.floor(
-        (difference / (1000 * 60)) % 60
-    );
+    const minutes =
+        Math.floor(
+            (difference /
+            (1000 * 60)) % 60
+        );
 
-    const seconds = Math.floor(
-        (difference / 1000) % 60
-    );
+    const seconds =
+        Math.floor(
+            (difference / 1000) % 60
+        );
 
 
-    document.getElementById("days").innerText =
-        String(days).padStart(2, "0");
+    document.getElementById("days").textContent =
+        String(days).padStart(2,"0");
 
-    document.getElementById("hours").innerText =
-        String(hours).padStart(2, "0");
+    document.getElementById("hours").textContent =
+        String(hours).padStart(2,"0");
 
-    document.getElementById("minutes").innerText =
-        String(minutes).padStart(2, "0");
+    document.getElementById("minutes").textContent =
+        String(minutes).padStart(2,"0");
 
-    document.getElementById("seconds").innerText =
-        String(seconds).padStart(2, "0");
-
+    document.getElementById("seconds").textContent =
+        String(seconds).padStart(2,"0");
 }
 
 
 updateCountdown();
 
-setInterval(updateCountdown, 1000);
+setInterval(updateCountdown,1000);
 
 </script>
 
