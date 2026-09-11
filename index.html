@@ -4,331 +4,561 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A Little Something for Sreya 🎁</title>
+<title>Sreya's Birthday Surprise 🎁</title>
 
 <style>
-
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
     min-height: 100vh;
-    overflow: hidden;
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: "Segoe UI", Arial, sans-serif;
     color: white;
-
+    overflow-x: hidden;
     background:
-        radial-gradient(circle at 20% 20%, rgba(147,51,234,.25), transparent 35%),
-        radial-gradient(circle at 80% 80%, rgba(236,72,153,.18), transparent 35%),
-        linear-gradient(135deg, #090414, #160b27, #080812);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        radial-gradient(circle at 20% 20%, rgba(130, 80, 255, 0.20), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(255, 80, 170, 0.16), transparent 30%),
+        linear-gradient(135deg, #080817, #11112b, #090914);
 }
 
-/* Floating stars */
-
-.star {
+/* Background stars */
+.stars,
+.stars::before,
+.stars::after {
     position: fixed;
-    width: 3px;
-    height: 3px;
-    background: white;
-    border-radius: 50%;
-    opacity: .5;
-    animation: twinkle 3s infinite alternate;
+    inset: 0;
+    content: "";
+    pointer-events: none;
 }
 
-.star:nth-child(1) { top: 12%; left: 15%; }
-.star:nth-child(2) { top: 25%; left: 80%; animation-delay: 1s; }
-.star:nth-child(3) { top: 70%; left: 12%; animation-delay: 2s; }
-.star:nth-child(4) { top: 82%; left: 78%; animation-delay: .5s; }
-.star:nth-child(5) { top: 40%; left: 92%; animation-delay: 1.5s; }
-.star:nth-child(6) { top: 15%; left: 55%; animation-delay: 2.5s; }
-
-@keyframes twinkle {
-    from { opacity: .15; transform: scale(.7); }
-    to { opacity: .9; transform: scale(1.4); }
+.stars {
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px);
+    background-size: 75px 75px;
+    opacity: .28;
+    animation: drift 35s linear infinite;
 }
 
-/* Main card */
+.stars::before {
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.7) 1px, transparent 1px);
+    background-size: 120px 120px;
+    opacity: .25;
+}
 
+.stars::after {
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.6) 1px, transparent 1px);
+    background-size: 170px 170px;
+    opacity: .20;
+}
+
+@keyframes drift {
+    from { transform: translateY(0); }
+    to { transform: translateY(-100px); }
+}
+
+/* Main container */
 .container {
-    width: 92%;
-    max-width: 680px;
-    text-align: center;
-    padding: 45px 28px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    position: relative;
+    z-index: 2;
+}
 
-    background: rgba(255,255,255,.055);
-    border: 1px solid rgba(255,255,255,.13);
+.card {
+    width: min(680px, 94vw);
+    padding: 45px 30px;
+    text-align: center;
     border-radius: 28px;
 
-    backdrop-filter: blur(18px);
+    background: rgba(255,255,255,.075);
+    border: 1px solid rgba(255,255,255,.14);
     box-shadow:
-        0 25px 80px rgba(0,0,0,.5),
-        inset 0 1px rgba(255,255,255,.08);
+        0 25px 80px rgba(0,0,0,.55),
+        inset 0 1px rgba(255,255,255,.12);
 
-    animation: appear 1.5s ease;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    animation: cardAppear 1.2s ease;
 }
 
-@keyframes appear {
+@keyframes cardAppear {
     from {
         opacity: 0;
         transform: translateY(25px) scale(.97);
     }
-
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
 }
 
-/* Gift */
-
-.gift {
-    font-size: 68px;
-    margin-bottom: 15px;
-
-    animation: floatingGift 3s ease-in-out infinite;
+.icon {
+    font-size: 65px;
+    margin-bottom: 18px;
+    animation: float 3s ease-in-out infinite;
 }
 
-@keyframes floatingGift {
-
-    0%,100% {
-        transform: translateY(0) rotate(-2deg);
-    }
-
-    50% {
-        transform: translateY(-12px) rotate(2deg);
-    }
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
-.small-heading {
-    font-family: Arial, sans-serif;
-    text-transform: uppercase;
+.small-title {
+    font-size: 14px;
     letter-spacing: 4px;
-    font-size: .72rem;
-    color: #d8b4fe;
+    text-transform: uppercase;
+    opacity: .65;
     margin-bottom: 15px;
 }
 
 h1 {
-    font-size: clamp(2.2rem, 7vw, 3.5rem);
-    font-weight: normal;
+    font-size: clamp(32px, 7vw, 58px);
+    line-height: 1.1;
     margin-bottom: 18px;
+    background: linear-gradient(90deg, #fff, #f2c7ff, #ffd6ef);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.intro {
-    font-family: Arial, sans-serif;
-    line-height: 1.8;
-    color: #d9d1e8;
-    font-size: 1rem;
+.subtitle {
+    font-size: 18px;
+    line-height: 1.7;
+    opacity: .82;
+    margin-bottom: 30px;
 }
 
-/* Lock */
-
-.lock-section {
-    margin-top: 30px;
-    padding: 24px;
-
-    border-radius: 20px;
-
-    background: rgba(0,0,0,.25);
-    border: 1px solid rgba(255,255,255,.09);
-}
-
-.lock {
-    font-size: 42px;
-    margin-bottom: 10px;
-
-    animation: lockPulse 2.5s infinite;
-}
-
-@keyframes lockPulse {
-
-    0%,100% {
-        transform: scale(1);
-        filter: drop-shadow(0 0 0 rgba(255,255,255,0));
-    }
-
-    50% {
-        transform: scale(1.08);
-        filter: drop-shadow(0 0 12px rgba(216,180,254,.45));
-    }
-}
-
-.locked {
-    font-family: Arial, sans-serif;
-    font-size: .75rem;
-    letter-spacing: 3px;
-    color: #f9a8d4;
-    font-weight: bold;
-}
-
+/* Countdown */
 .countdown {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-    margin-top: 22px;
-    flex-wrap: wrap;
+    margin: 25px 0;
 }
 
-.time {
-    min-width: 72px;
-    padding: 12px 8px;
-
-    background: rgba(255,255,255,.07);
-    border-radius: 14px;
-
+.time-box {
+    padding: 15px 8px;
+    border-radius: 16px;
+    background: rgba(255,255,255,.08);
     border: 1px solid rgba(255,255,255,.08);
 }
 
 .number {
     display: block;
-    font-family: Arial, sans-serif;
-    font-size: 1.65rem;
-    font-weight: bold;
+    font-size: 30px;
+    font-weight: 700;
 }
 
 .label {
-    display: block;
-    margin-top: 5px;
-
-    font-family: Arial, sans-serif;
-    font-size: .63rem;
-    letter-spacing: 1.5px;
+    font-size: 11px;
     text-transform: uppercase;
-    color: #aaa0bd;
+    letter-spacing: 1px;
+    opacity: .55;
 }
 
-/* Bottom */
+.unlock-date {
+    font-size: 13px;
+    opacity: .5;
+    margin-top: 22px;
+}
 
-.date {
+/* Buttons */
+button {
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+
+    padding: 16px 28px;
+    border-radius: 999px;
+
+    background: linear-gradient(135deg, #9b6cff, #e76bb8);
+    box-shadow: 0 12px 30px rgba(175,100,255,.28);
+
+    transition: .25s ease;
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 17px 35px rgba(175,100,255,.38);
+}
+
+button:active {
+    transform: scale(.97);
+}
+
+/* Hidden sections */
+.hidden {
+    display: none !important;
+}
+
+/* Unlock screen */
+.verified {
+    color: #bfffd4;
+    font-size: 14px;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+}
+
+.open-icon {
+    font-size: 80px;
+    animation: openGift 1.5s ease-in-out infinite;
+}
+
+@keyframes openGift {
+    0%,100% { transform: rotate(-4deg) scale(1); }
+    50% { transform: rotate(4deg) scale(1.08); }
+}
+
+/* Birthday screen */
+.birthday-card {
+    animation: birthdayAppear 1s ease;
+}
+
+@keyframes birthdayAppear {
+    from {
+        opacity: 0;
+        transform: scale(.85);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.big-title {
+    font-size: clamp(40px, 10vw, 75px);
+    font-weight: 800;
+    line-height: 1;
+    margin: 12px 0 25px;
+
+    background: linear-gradient(
+        90deg,
+        #fff,
+        #ffd3f0,
+        #d8c7ff,
+        #fff
+    );
+
+    background-size: 250% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position: 250% center;
+    }
+}
+
+.message {
+    font-size: 18px;
+    line-height: 1.8;
+    opacity: .88;
+    margin: 0 auto 28px;
+    max-width: 570px;
+}
+
+/* Letter */
+.letter {
+    text-align: left;
     margin-top: 25px;
-
-    font-family: Arial, sans-serif;
-    font-size: .85rem;
-    color: #c4b5fd;
+    padding: 28px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.055);
+    border: 1px solid rgba(255,255,255,.10);
+    line-height: 1.85;
+    font-size: 16px;
 }
 
-.teaser {
+.letter p {
+    margin-bottom: 17px;
+}
+
+.signature {
+    text-align: right;
+    opacity: .8;
     margin-top: 20px;
-
-    font-family: Arial, sans-serif;
-    font-size: .9rem;
-    color: #a9a0b8;
 }
 
-.teaser span {
-    color: #f9a8d4;
+/* Music button */
+.music-control {
+    position: fixed;
+    right: 18px;
+    top: 18px;
+    z-index: 20;
+
+    width: 48px;
+    height: 48px;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,.10);
+    border: 1px solid rgba(255,255,255,.15);
+    box-shadow: none;
+    backdrop-filter: blur(10px);
+}
+
+/* Final message */
+.final {
+    margin-top: 28px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.footer {
+    margin-top: 28px;
+    font-size: 12px;
+    opacity: .38;
+}
+
+/* Confetti */
+.confetti {
+    position: fixed;
+    width: 9px;
+    height: 14px;
+    top: -20px;
+    z-index: 50;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+        opacity: 0;
+    }
 }
 
 /* Mobile */
+@media (max-width: 500px) {
 
-@media(max-width:500px) {
-
-    .container {
-        padding: 35px 18px;
+    .card {
+        padding: 35px 20px;
+        border-radius: 23px;
     }
 
-    .gift {
-        font-size: 58px;
+    .countdown {
+        gap: 6px;
     }
 
-    .time {
-        min-width: 65px;
+    .time-box {
+        padding: 12px 4px;
     }
 
     .number {
-        font-size: 1.4rem;
+        font-size: 24px;
+    }
+
+    .label {
+        font-size: 9px;
+    }
+
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .letter {
+        padding: 22px;
+        font-size: 15px;
     }
 }
-
 </style>
 </head>
 
-
 <body>
 
-<!-- Background stars -->
+<div class="stars"></div>
 
-<div class="star"></div>
-<div class="star"></div>
-<div class="star"></div>
-<div class="star"></div>
-<div class="star"></div>
-<div class="star"></div>
+<!-- Music -->
+<audio id="birthdayMusic" loop preload="auto">
+    <source src="birthday-mystery-music.wav" type="audio/wav">
+</audio>
+
+<button id="musicButton" class="music-control hidden" onclick="toggleMusic()">
+    🎵
+</button>
 
 
 <div class="container">
 
-    <div class="gift">🎁</div>
+    <!-- LOCKED SCREEN -->
+    <div class="card" id="lockedScreen">
 
-    <div class="small-heading">
-        A little mystery awaits
-    </div>
+        <div class="icon">🎁</div>
 
-    <h1>Hey, Sreya...</h1>
-
-    <p class="intro">
-        Someone has been slightly more creative than usual
-        and prepared something for you.
-        <br><br>
-        But there's a tiny problem...
-        <br>
-        <b>You can't see it yet. 😜</b>
-    </p>
-
-
-    <div class="lock-section">
-
-        <div class="lock">🔐</div>
-
-        <div class="locked">
-            BIRTHDAY SURPRISE — LOCKED
+        <div class="small-title">
+            A little mystery awaits
         </div>
 
-        <p class="teaser">
-            The secret will reveal itself when the time is right.
-            <br>
-            <span>Patience, birthday girl. 😉</span>
-        </p>
+        <h1>Hey, Sreya...</h1>
 
+        <p class="subtitle">
+            Something special has been prepared for you.
+            <br>
+            But unfortunately... it's locked. 🔐
+        </p>
 
         <div class="countdown">
 
-            <div class="time">
+            <div class="time-box">
                 <span class="number" id="days">00</span>
                 <span class="label">Days</span>
             </div>
 
-            <div class="time">
+            <div class="time-box">
                 <span class="number" id="hours">00</span>
                 <span class="label">Hours</span>
             </div>
 
-            <div class="time">
+            <div class="time-box">
                 <span class="number" id="minutes">00</span>
                 <span class="label">Minutes</span>
             </div>
 
-            <div class="time">
+            <div class="time-box">
                 <span class="number" id="seconds">00</span>
                 <span class="label">Seconds</span>
             </div>
 
         </div>
 
+        <div class="unlock-date">
+            🔒 Unlocks automatically on 14 September 2026 at 12:00 AM
+        </div>
+
     </div>
 
 
-    <div class="date">
-        🔓 Unlocks on
-        <br>
-        <b>14 September 2026 • 12:00 AM IST</b>
+    <!-- UNLOCK SCREEN -->
+    <div class="card hidden" id="unlockScreen">
+
+        <div class="open-icon">🎁</div>
+
+        <div class="verified">
+            DATE VERIFIED ✓
+        </div>
+
+        <h1>Something has changed...</h1>
+
+        <p class="subtitle">
+            The mystery is no longer locked.
+            <br>
+            Your surprise is ready. ✨
+        </p>
+
+        <button onclick="openSurprise()">
+            OPEN MY SURPRISE 🎁
+        </button>
+
+        <div class="footer">
+            Warning: happiness may occur. 😄
+        </div>
+
+    </div>
+
+
+    <!-- BIRTHDAY SCREEN -->
+    <div class="card birthday-card hidden" id="birthdayScreen">
+
+        <div class="icon">🎂</div>
+
+        <div class="small-title">
+            Today is officially your day
+        </div>
+
+        <div class="big-title">
+            HAPPY<br>
+            BIRTHDAY<br>
+            SREYA! 🎉
+        </div>
+
+        <p class="message">
+            Some birthdays deserve more than just a
+            “Happy Birthday” message...
+            so this one comes with a little surprise. 😊
+        </p>
+
+        <div class="letter">
+
+            <p>
+                Hey Sreya,
+            </p>
+
+            <p>
+                First of all — <strong>Happy Birthday! 🎂</strong>
+            </p>
+
+            <p>
+                I hope this new year of your life brings you
+                plenty of reasons to smile, lots of memorable
+                moments, and of course, enough good luck to
+                survive whatever unexpected adventures life
+                decides to throw at you. 😄
+            </p>
+
+            <p>
+                College gave us a lot of memories, but one of
+                the nicest things about college is that some
+                people remain good friends even after the
+                classrooms, assignments and exams are long
+                gone.
+            </p>
+
+            <p>
+                So today, I just wanted to do something a little
+                different instead of sending another ordinary
+                birthday text.
+            </p>
+
+            <p>
+                May you keep growing, keep laughing, keep
+                achieving the things you want, and most
+                importantly, keep being the person you are.
+            </p>
+
+            <p>
+                Here's wishing you an absolutely fantastic year
+                ahead — filled with happiness, success, good
+                health, exciting opportunities and plenty of
+                unforgettable moments.
+            </p>
+
+            <p>
+                And yes... I hope this tiny surprise managed to
+                make your birthday morning a little more special. 😊
+            </p>
+
+            <div class="signature">
+                — From your slightly over-creative friend 😄
+            </div>
+
+        </div>
+
+        <div class="final">
+            Have an amazing year ahead, Sreya! 🥳✨
+        </div>
+
+        <div class="footer">
+            Made especially for 14 September 2026
+        </div>
+
     </div>
 
 </div>
@@ -336,81 +566,59 @@ h1 {
 
 <script>
 
+/* =========================================
+   BIRTHDAY DATE
+   India Standard Time = UTC + 5:30
+========================================= */
+
+const birthdayTime =
+    new Date("2026-09-14T00:00:00+05:30").getTime();
+
+
+const lockedScreen =
+    document.getElementById("lockedScreen");
+
+const unlockScreen =
+    document.getElementById("unlockScreen");
+
+const birthdayScreen =
+    document.getElementById("birthdayScreen");
+
+const music =
+    document.getElementById("birthdayMusic");
+
+const musicButton =
+    document.getElementById("musicButton");
+
+
+/* =========================================
+   COUNTDOWN
+========================================= */
+
 function updateCountdown() {
 
-    const target =
-        new Date("2026-09-14T00:00:00+05:30");
+    const now = new Date().getTime();
 
-    const now = new Date();
-
-    const difference = target - now;
-
+    const difference = birthdayTime - now;
 
     if (difference <= 0) {
 
-        document.body.innerHTML = `
-
-        <div style="
-            min-height:100vh;
-            width:100%;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            text-align:center;
-            background:linear-gradient(135deg,#ec4899,#8b5cf6,#4f46e5);
-            color:white;
-            font-family:Arial,sans-serif;
-            padding:25px;
-        ">
-
-            <div>
-
-                <div style="font-size:85px;">
-                    🎉
-                </div>
-
-                <h1 style="
-                    font-size:clamp(2.4rem,8vw,4.5rem);
-                    margin:20px 0;
-                ">
-                    HAPPY BIRTHDAY,
-                    <br>
-                    SREYA!
-                </h1>
-
-                <p style="
-                    font-size:1.2rem;
-                    line-height:1.7;
-                ">
-                    Your surprise has officially unlocked. 🎁
-                </p>
-
-            </div>
-
-        </div>
-
-        `;
+        unlock();
 
         return;
     }
 
-
     const days =
-        Math.floor(
-            difference /
-            (1000 * 60 * 60 * 24)
-        );
+        Math.floor(difference / (1000 * 60 * 60 * 24));
 
     const hours =
         Math.floor(
-            (difference /
-            (1000 * 60 * 60)) % 24
+            (difference / (1000 * 60 * 60)) % 24
         );
 
     const minutes =
         Math.floor(
-            (difference /
-            (1000 * 60)) % 60
+            (difference / (1000 * 60)) % 60
         );
 
     const seconds =
@@ -418,24 +626,134 @@ function updateCountdown() {
             (difference / 1000) % 60
         );
 
-
     document.getElementById("days").textContent =
-        String(days).padStart(2,"0");
+        String(days).padStart(2, "0");
 
     document.getElementById("hours").textContent =
-        String(hours).padStart(2,"0");
+        String(hours).padStart(2, "0");
 
     document.getElementById("minutes").textContent =
-        String(minutes).padStart(2,"0");
+        String(minutes).padStart(2, "0");
 
     document.getElementById("seconds").textContent =
-        String(seconds).padStart(2,"0");
+        String(seconds).padStart(2, "0");
 }
 
 
+/* =========================================
+   UNLOCK
+========================================= */
+
+function unlock() {
+
+    lockedScreen.classList.add("hidden");
+
+    unlockScreen.classList.remove("hidden");
+
+    createConfetti(70);
+}
+
+
+/* =========================================
+   OPEN SURPRISE
+========================================= */
+
+function openSurprise() {
+
+    unlockScreen.classList.add("hidden");
+
+    birthdayScreen.classList.remove("hidden");
+
+    musicButton.classList.remove("hidden");
+
+    /*
+       Browser allows audio because this function
+       is triggered by the user's button click.
+    */
+
+    music.play().catch(() => {
+        musicButton.textContent = "▶️";
+    });
+
+    createConfetti(180);
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* =========================================
+   MUSIC CONTROL
+========================================= */
+
+function toggleMusic() {
+
+    if (music.paused) {
+
+        music.play();
+
+        musicButton.textContent = "🎵";
+
+    } else {
+
+        music.pause();
+
+        musicButton.textContent = "🔇";
+    }
+}
+
+
+/* =========================================
+   CONFETTI
+========================================= */
+
+function createConfetti(amount) {
+
+    for (let i = 0; i < amount; i++) {
+
+        const piece =
+            document.createElement("div");
+
+        piece.className = "confetti";
+
+        piece.style.left =
+            Math.random() * 100 + "vw";
+
+        piece.style.animationDuration =
+            (3 + Math.random() * 4) + "s";
+
+        piece.style.animationDelay =
+            Math.random() * 1.5 + "s";
+
+        piece.style.transform =
+            `rotate(${Math.random() * 360}deg)`;
+
+        /*
+           Use random HSL colors so each piece
+           looks different.
+        */
+
+        piece.style.background =
+            `hsl(${Math.random() * 360}, 90%, 70%)`;
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => {
+            piece.remove();
+        }, 8000);
+    }
+}
+
+
+/* =========================================
+   START
+========================================= */
+
 updateCountdown();
 
-setInterval(updateCountdown,1000);
+setInterval(updateCountdown, 1000);
 
 </script>
 
